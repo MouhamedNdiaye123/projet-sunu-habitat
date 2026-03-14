@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<section class="connexion-section" id="connexion">
+  <div class="section-heading">
+    <h2>se connecter</h2>
+  </div>
+  <div class="connexion">
+    <form method="POST">
+      {% csrf_token %}
+      <label for="">Entrez votre email</label>
+      <input type="email" name="email" placeholder="Votre email" required>
+      <label for="">Mot de passe</label>
+      <input type="password" name="password" placeholder="Votre mot de passe" required>
+      <button type="submit" class="button">Se Connecter</button>
+      <p>
+        Vous n'avez pas de compte ?
+        <a href="{% url 'register' %}">S'inscrire</a>
+      </p>
+    </form>
+  </div>
+  {% for message in messages %}
+  <p style="color: red">{{ message }}</p>
+  {% endfor %} 
+</section>
+{% endblock %}
+
+

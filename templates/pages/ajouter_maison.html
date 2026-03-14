@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<section class="connexion-section" id="connexion">
+  <div class="section-heading">
+    <h2>Ajouter une maison</h2>
+  </div>
+  <div class="connexion">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label>Nom de la maison</label>
+      <input type="text" name="nom" placeholder="Nom de la maison" required />
+      <label>Localisation</label>
+      <input type="text" name="localisation" placeholder="Adresse de la maison" required />
+      <label>Prix</label>
+      <input type="number" name="prix" placeholder="Prix de la maison" required />
+      <label>Description</label>
+      <textarea name="description" placeholder="Plus de detail"></textarea>
+      <label>Image</label>
+      <input type="file" name="image" placeholder="" required />
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<section class="">
+  <div class="section-heading">
+    <h2><span>{{ maison.nom }}</span></h2>
+  </div>
+
+  <div class="detail-maison-container">
+    <div class="detail-maison-img">
+      <img src="{{ maison.image.url }}" loading="lazy" />
+    </div>
+
+    <div class="detail-maison-content">
+      <h3>Détails</h3>
+      <p><strong>Description :</strong> {{ maison.description }}</p>
+      <p><strong>Localisation :</strong> {{ maison.localisation }}</p>
+      <p><strong>Prix :</strong> {{ maison.prix }} FCFA</p>
+      <div>
+        <a href="https://wa.me/{{ maison.telephone }}" target="_blank" class="btn btn-">
+          Contacter sur WhatsApp
+        </a>
+        <a href="#contact" class="btn btn-">
+          Réserver / Contacter
+        </a>
+      </div>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<section class="connexion-section" id="connexion">
+  <div class="section-heading">
+    <h2>créer un compte</h2>
+  </div>
+  <div class="connexion">
+    <form method="POST">
+      {% csrf_token %}
+
+      <label>Entrez votre nom complet</label>
+      <input
+        type="text"
+        name="full_name"
+        placeholder="Votre nom complet"
+        required
+      />
+      <label>Entrez votre numéro</label>
+      <input
+        type="text"
+        name="phone"
+        placeholder="Votre numéro de téléphone"
+        required
+      />
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Votre eEmail" required />
+      <label>Type d'utilisateur :</label>
+      <select name="type_user" required>
+        <option value="">--Choisir--</option>
+        <option value="client">Client</option>
+        <option value="proprietaire">Proprietaire</option>
+      </select>
+      <label>Mot de passe</label>
+      <input
+        type="password"
+        name="password"
+        placeholder="Votre mot de passe"
+        required
+      />
+      <label>Confirmer votre mot de passe :</label>
+      <input
+        type="password"
+        name="password2"
+        placeholder="Confirmer votre mot de passe"
+        required
+      />
+      <button type="submit" class="button">Créer un compte</button>
+      <p>
+        Vous avez déjà un compte ? <a href="{% url 'login' %}">Se connecter</a>
+      </p>
+    </form>
+  </div>
+</section>
+
+{% for message in messages %}
+<p style="color: red">{{ message }}</p>
+{% endfor %} {% endblock %}

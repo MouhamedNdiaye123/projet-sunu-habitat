@@ -1,0 +1,24 @@
+{% extends 'dashboard/base-dashboard.html' %} {% block content %}
+
+<h2>Mes maisons</h2>
+
+<div class="maison-container">
+  {% for maison in maisons %}
+
+  <div class="maison-box">
+    <img src="{{ maison.image.url }}" />
+    <div class="maison-content">
+      <h4>{{ maison.nom }}</h4>
+      <p>{{ maison.localisation }}</p>
+      <p>{{ maison.prix }} FCFA</p>
+      <a href="{% url 'modifier_maison' maison.id %}" class="btn"> Modifier </a>
+      <a href="{% url 'supprimer_maison' maison.id %}" class="btn delete"> Supprimer </a>
+    </div>
+  </div>
+
+  {% empty %}
+  <p>Aucune maison disponible</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

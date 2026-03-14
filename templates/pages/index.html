@@ -1,0 +1,225 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+
+{% comment %} <!-- HOME SECTION --> {% endcomment %}
+
+<section class="home" id="home">
+  <div class="home-content">
+    <div class="home-title">
+      <h1>
+        Sunu Habitat <br /><span>Connecter propriétaires et locataires.</span>
+      </h1>
+    </div>
+    <p>
+      La plateforme sénégalaise dédiée à la location et à la gestionimmobilière.
+      <br />
+      Nous connectons propriétaires et locataires de manière simple, rapide et
+      sécurisée.
+    </p>
+    <div class="btn-box">
+      <a href="#maisons" class="btn">Voir les annonces</a>
+      <a href="{% url 'ajouter_maison' %}" class="btn btn-2">Publier une annonce</a>
+    </div>
+  </div>
+</section>
+
+{% comment %} <!-- MAISONS --> {% endcomment %}
+
+<section class="maison" id="maisons" >
+  <div class="section-heading">
+    <h2>Nos Biens immobiliers <span>Disponibles</span></h2>
+    <p>
+      Découvrez une sélection de maisons et appartements disponibles <br />à
+      la location ou à la vente dans différentes localités du Sénégal.
+    </p>
+  </div>
+  
+  <div class="maison-container">
+    {% for maison in maisons %}
+    <div class="maison-box">
+      <img src="{{ maison.image.url }}" alt="img maison" loading="lazy" />
+      <div class="maison-content">
+        <div class="maison-info">
+          <h3>{{ maison.nom }}</h3>
+          <span>{{ maison.localisation }}</span>
+        </div>
+        <div class="btn-groupe">
+          <a href="{% url 'detail_maison' maison.id %}" class="btn"> Voir détails </a>
+          <span>{{ maison.prix }} FCFA</span>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  
+</section>
+
+{% comment %} <!-- ABOUT SECTION --> {% endcomment %}
+
+<section class="about" id="about">
+  <div class="section-heading">
+    <h2>À propos de <span>SUNU HABITAT</span></h2>
+    <p>Une vision moderne de l’immobilier au Sénégal.</p>
+  </div>
+  <div class="about-container">
+    <div class="about-content">
+      <h3>Qui sommes-nous ?</h3>
+      <p>
+        <b>SUNU HABITAT</b> est une société basée au Sénégal spécialisée dans la
+        vente et la location de biens immobiliers. Notre mission est de
+        moderniser le secteur immobilier en proposant une plateforme numérique
+        performante, accessible et sécurisée. <br />
+        Nous accompagnons les propriétaires dans la mise en valeur et la gestion
+        de leurs biens, tout en aidant les clients à trouver un logement adapté
+        à leurs besoins et à leur budget. SUNU HABITAT s’inscrit dans une
+        dynamique de digitalisation du marché immobilier sénégalais, en mettant
+        la technologie au service de la simplicité, de la transparence et de
+        l’efficacité.<br />
+        Notre Vision Devenir une référence nationale dans le domaine de
+        l’immobilier digital au Sénégal, en offrant une solution fiable et
+        innovante qui simplifie la recherche et la gestion de logements.
+      </p>
+    </div>
+    <div class="about-img">
+      <img src="{% static 'images/about-img.jpg' %}" />
+    </div>
+  </div>
+</section>
+
+{% comment %} CHOICE SECTION {% endcomment %}
+
+<section class="choice" id="choice">
+  <div class="section-heading">
+    <h2>Pourquoi choisir <span>SUNU HABITAT ?</span></h2>
+    <p>
+      Nous nous facilitons et simplifions la relation entre clients et
+      propriétaires
+    </p>
+  </div>
+  <div class="choice-container">
+    <div class="choice-box">
+      <i class="bx bx-badge-check"></i>
+      <h4>Expertise Locale</h4>
+      <p>Une plateforme pensée pour le marché immobilier sénégalais.</p>
+    </div>
+    <div class="choice-box">
+      <i class="bx bx-lock"></i>
+      <h4>Sécurité Garantie</h4>
+      <p>Vos données et vos échanges sont protégés.</p>
+    </div>
+    <div class="choice-box">
+      <i class="bx bxs-bolt"></i>
+      <h4>Simplicité d’Utilisation</h4>
+      <p>Recherchez ou publiez un bien en quelques clics.</p>
+    </div>
+    <div class="choice-box">
+      <i class="bx bx-notepad"></i>
+      <h4>Transparence Totale</h4>
+      <p>Des annonces claires, détaillées et fiables.</p>
+    </div>
+    <div class="choice-box">
+      <i class="bx bx-timer"></i>
+      <h4>Gain de Temps</h4>
+      <p>Trouvez rapidement le logement adapté à vos besoins.</p>
+    </div>
+    <div class="choice-box">
+      <i class="bx bx-trending-up"></i>
+      <h4>Innovation Digitale</h4>
+      <p>Une solution moderne pour digitaliser l’immobilier au Sénégal.</p>
+    </div>
+  </div>
+</section>
+
+{% comment %} <!-- CLIENTS SECTION --> {% endcomment %}
+
+<section class="client" id="client">
+  <div class="section-heading">
+    <h2>ce que disent <span>nos clients</span></h2>
+    <p>Des solutions complètes pour propriétaires et locataires.</p>
+  </div>
+  <div class="client-container">
+    <div class="client-box">
+      
+      <img src="{% static 'images/client-1.jpg' %}" />
+      <h4>Yunuss Sy</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero amet
+        quia aliquid quibusdam consequuntur fugiat!
+      </p>
+    </div>
+    <div class="client-box">
+      <img src="{% static 'images/client-2.jpg' %}" />
+      <h4>Awa Kontey</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero amet
+        quia aliquid quibusdam consequuntur fugiat!
+      </p>
+    </div>
+    <div class="client-box">
+      <img src="{% static 'images/client-3.jpg' %}" />
+      <h4>Ngom</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero amet
+        quia aliquid quibusdam consequuntur fugiat!
+      </p>
+    </div>
+  </div>
+</section>
+
+{% comment %} <!-- TEMOIGNAGES --> {% endcomment %}
+
+<section>
+  <h2>Ce que disent nos clients</h2>
+
+  {% for t in temoignages %}
+
+  <p><strong>{{ t.nom }}</strong> : {{ t.message }}</p>
+
+  {% endfor %}
+</section>
+
+{% comment %} <!-- CONTACT SECTION --> {% endcomment %}
+
+<section class="contact" id="contact">
+  <div class="section-heading">
+    <h2>nous <span>contacter</span></h2>
+    <p>
+      Vous avez une question ou besoin d’assistance ? <br />
+      Notre équipe est à votre disposition.
+    </p>
+  </div>
+  <div class="contact-container">
+    <div class="contact-img">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d964.6683328194192!2d-17.428605123055448!3d14.731051812535053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec10cd3ff68191f%3A0x3c1ce29229253a3e!2sHann%20Maristes%201%2C%20Dakar!5e0!3m2!1sfr!2ssn!4v1773092711930!5m2!1sfr!2ssn"
+        width="600"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+    <form action="">
+      <div class="form-groupe">
+        <div>
+          <label for="">Prenom</label>
+          <input type="text" name="" id="" placeholder="Votre prenom" />
+        </div>
+        <div>
+          <label for="">Nom</label>
+          <input type="text" name="" id="" placeholder="Votre nom" />
+        </div>
+      </div>
+      <label for="">Telephone</label>
+      <input type="text" name="" id="" placeholder="Votre tel" />
+      <label for="">Message</label>
+      <textarea name="" id="" placeholder="Votre message"></textarea>
+      <button type="submit" class="button">Envoyer le message</button>
+    </form>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% load static %}
+<nav>
+  <a href="/" class="logo">
+    <img src="{% static 'images/S.png' %}" />
+  </a>
+  <ul class="navigation" id="navigation">
+    <li><a href="/">Accueil</a></li>
+    <li><a href="#maisons">Nos maisons</a></li>
+    <li><a href="#about">A propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+    {% comment %} <li><a href="{% url 'login' %}">Connexion</a></li> {% endcomment %}
+    {% if request.user.is_authenticated %}
+    {% comment %} <span style="color: white; margin-right: 20px">Bonjour {{ request.user.username }}</span> {% endcomment %}
+    <li><a href="{% url 'logout' %}" >Déconnexion</a></li>
+    {% else %}
+    <li><a href="{% url 'login' %}">Connexion</a></li>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+    {% endif %}
+  </ul>
+  <i class="bx bx-menu-alt-right" id="menu-burger"></i>
+</nav>
