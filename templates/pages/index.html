@@ -1,8 +1,6 @@
-{% extends 'base.html' %} 
-{% load static %}
-{% block content %}
-
-{% comment %} <!-- HOME SECTION --> {% endcomment %}
+{% extends 'base.html' %} {% load static %} {% block content %} {% comment %}
+<!-- HOME SECTION -->
+{% endcomment %}
 
 <section class="home" id="home">
   <div class="home-content">
@@ -19,22 +17,36 @@
     </p>
     <div class="btn-box">
       <a href="#maisons" class="btn">Voir les annonces</a>
-      <a href="{% url 'ajouter_maison' %}" class="btn btn-2">Publier une annonce</a>
+      <a href="{% url 'ajouter_maison' %}" class="btn btn-2"
+        >Publier une annonce</a
+      >
     </div>
   </div>
 </section>
 
-{% comment %} <!-- MAISONS --> {% endcomment %}
 
-<section class="maison" id="maisons" >
+<section class="search-section">
+  <form method="GET" class="search-form">
+    <input type="text" name="ville" placeholder="Ville" />
+    <input type="number" name="prix_min" placeholder="Prix min FCFA" />
+    <input type="number" name="prix_max" placeholder="Prix max FCFA" />
+    <button type="submit">Rechercher</button>
+  </form>
+</section>
+
+{% comment %}
+<!-- MAISONS -->
+{% endcomment %}
+
+<section class="maison" id="maisons">
   <div class="section-heading">
     <h2>Nos Biens immobiliers <span>Disponibles</span></h2>
     <p>
-      Découvrez une sélection de maisons et appartements disponibles <br />à
-      la location ou à la vente dans différentes localités du Sénégal.
+      Découvrez une sélection de maisons et appartements disponibles <br />à la
+      location ou à la vente dans différentes localités du Sénégal.
     </p>
   </div>
-  
+
   <div class="maison-container">
     {% for maison in maisons %}
     <div class="maison-box">
@@ -45,18 +57,20 @@
           <span>{{ maison.localisation }}</span>
         </div>
         <div class="btn-groupe">
-          <a href="{% url 'detail_maison' maison.id %}" class="btn"> Voir détails </a>
+          <a href="{% url 'detail_maison' maison.id %}" class="btn">
+            Voir détails
+          </a>
           <span>{{ maison.prix }} FCFA</span>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
-
-  
 </section>
 
-{% comment %} <!-- ABOUT SECTION --> {% endcomment %}
+{% comment %}
+<!-- ABOUT SECTION -->
+{% endcomment %}
 
 <section class="about" id="about">
   <div class="section-heading">
@@ -132,7 +146,9 @@
   </div>
 </section>
 
-{% comment %} <!-- CLIENTS SECTION --> {% endcomment %}
+{% comment %}
+<!-- CLIENTS SECTION -->
+{% endcomment %}
 
 <section class="client" id="client">
   <div class="section-heading">
@@ -141,7 +157,6 @@
   </div>
   <div class="client-container">
     <div class="client-box">
-      
       <img src="{% static 'images/client-1.jpg' %}" />
       <h4>Yunuss Sy</h4>
       <p>
@@ -168,8 +183,9 @@
   </div>
 </section>
 
-{% comment %} <!-- TEMOIGNAGES --> {% endcomment %}
-
+{% comment %}
+<!-- TEMOIGNAGES -->
+{% endcomment %} {% comment %}
 <section>
   <h2>Ce que disent nos clients</h2>
 
@@ -179,8 +195,9 @@
 
   {% endfor %}
 </section>
-
-{% comment %} <!-- CONTACT SECTION --> {% endcomment %}
+{% endcomment %} {% comment %}
+<!-- CONTACT SECTION -->
+{% endcomment %}
 
 <section class="contact" id="contact">
   <div class="section-heading">

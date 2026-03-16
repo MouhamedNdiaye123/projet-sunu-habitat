@@ -13,12 +13,25 @@ def accueil(request):
     maisons = Maison.objects.all()
     temoignages = Temoignage.objects.all()
 
+    localisation = request.GET.get("localisation")
+    prix_min = request.GET.get("prix_min")
+    prix_max = request.GET.get("prix_max")
+
+    if localisation:
+        maisons = maisons.filter(localisation__icontains=localisation)
+
+    if prix_min:
+        maisons = maisons.filter(prix__gte=prix_min)
+
+    if prix_max:
+        maisons = maisons.filter(prix__lte=prix_max)
+
     context = {
-        'maisons': maisons,
+        "maisons": maisons,
         'temoignages': temoignages
     }
 
-    return render(request, 'pages/index.html', context)
+    return render(request, "pages/index.html", context)
 
 
 # DETAIL MAISON
@@ -46,6 +59,13 @@ def login_view(request):
         if user is not None:
             login(request, user)
             return redirect('home')
+        
+            if profil.type_user == "proprietaire":
+                return redirect("dashboard")
+
+            else:
+                return redirect("accueil")
+        
         else:
             messages.error(request, "Email ou mot de passe incorrect")
 
@@ -102,9 +122,12 @@ def dashboard(request):
 
     maisons = Maison.objects.filter(proprietaire=request.user)
 
+    total_maisons = maisons.count()
+
     context = {
         'profil': profil,
-        'maisons': maisons
+        'maisons': maisons,
+        'total_maisons': total_maisons
     }
 
     return render(request, 'pages/dashboard.html', context)

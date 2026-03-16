@@ -1,44 +1,3 @@
-{% comment %} {% load static %}
-
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - SUNU HABITAT</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  </head>
-
-  <body>
-    <!-- NAVBAR DASHBOARD -->
-    <nav>
-      <a href="/" class="logo">
-        <img src="{% static 'images/S.png' %}" />
-      </a>
-      <ul class="navigation" id="navigation">
-        <div class="dashboard-user">
-          <span>Bonjour {{ user.first_name }}</span>
-          <a href="{% url 'logout' %}" class="btn">Déconnexion</a>
-        </div>
-      </ul>
-      <i class="bx bx-menu-alt-right" id="menu-burger"></i>
-    </nav>
-
-    <div class="dashboard-container">
-      <!-- SIDEBAR -->
-
-      <div class="sidebar">
-        <a href="{% url 'dashboard' %}">Mes maisons</a>
-        <a href="{% url 'ajouter_maison' %}">Ajouter maison</a>
-        <a href="#">Messages</a>
-      </div>
-
-      <!-- CONTENU -->
-      <div class="dashboard-content">{% block content %} {% endblock %}</div>
-    </div>
-  </body>
-</html>
-{% endcomment %} 
 {% load static %}
 
 <!doctype html>
@@ -53,20 +12,35 @@
   </head>
 
   <body>
-
     <!-- NAVBAR DASHBOARD -->
     <nav>
       <a href="/" class="logo">
         <img src="{% static 'images/S.png' %}" />
       </a>
+      <i class="bx bx-menu" id="menu-dashboard"></i>
       <ul class="navigation" id="navigation">
         <div class="dashboard-user">
           <span>Bonjour {{ user.first_name|upper }}</span>
           <a href="{% url 'logout' %}" class="btn">Déconnexion</a>
         </div>
       </ul>
-      <i class="bx bx-menu-alt-right" id="menu-burger"></i>
+      {% comment %} <i class="bx bx-menu-alt-right" id="menu-burger"></i> {% endcomment %}
     </nav>
+    {% comment %} <nav>
+      <a href="/" class="logo">
+        <img src="{% static 'images/S.png' %}" />
+      </a>
+      <i class="bx bx-menu" id="menu-dashboard"></i>
+      <ul class="navigation" id="navigation">
+        <li class="dashboard-user">
+          <span>Bonjour {{ user.first_name|upper }}</span>
+        </li>
+
+        <li>
+          <a href="{% url 'logout' %}" class="btn">Déconnexion</a>
+        </li>
+      </ul>
+    </nav> {% endcomment %}
 
     <div class="dashboard-container">
       <!-- SIDEBAR -->

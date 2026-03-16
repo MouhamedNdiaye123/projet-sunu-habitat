@@ -32,3 +32,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 .scrollIntoView({ behavior: 'smooth' });
     });
 });
+
+let menuDashboard = document.querySelector("#menu-dashboard")
+let sidebar = document.querySelector(".sidebar")
+
+menuDashboard.onclick = () => {
+sidebar.classList.toggle("active")
+}
