@@ -1,7 +1,8 @@
-{% extends 'base.html' %} {% load static %} {% block content %} {% comment %}
+{% extends 'base.html' %} {% load static %} {% block content %} 
+
+{% comment %}
 <!-- HOME SECTION -->
 {% endcomment %}
-
 <section class="home" id="home">
   <div class="home-content">
     <div class="home-title">
@@ -17,20 +18,17 @@
     </p>
     <div class="btn-box">
       <a href="#maisons" class="btn">Voir les annonces</a>
-      <a href="{% url 'ajouter_maison' %}" class="btn btn-2"
-        >Publier une annonce</a
-      >
+      <a href="{% url 'ajouter_maison' %}" class="btn btn-2">Publier une annonce</a>
     </div>
   </div>
 </section>
-
 
 <section class="search-section">
   <form method="GET" class="search-form">
     <input type="text" name="ville" placeholder="Ville" />
     <input type="number" name="prix_min" placeholder="Prix min FCFA" />
     <input type="number" name="prix_max" placeholder="Prix max FCFA" />
-    <button type="submit">Rechercher</button>
+    <button type="submit" class="button">Rechercher</button>
   </form>
 </section>
 
@@ -184,8 +182,6 @@
 </section>
 
 {% comment %}
-<!-- TEMOIGNAGES -->
-{% endcomment %} {% comment %}
 <section>
   <h2>Ce que disent nos clients</h2>
 
@@ -195,7 +191,9 @@
 
   {% endfor %}
 </section>
-{% endcomment %} {% comment %}
+{% endcomment %} 
+
+{% comment %}
 <!-- CONTACT SECTION -->
 {% endcomment %}
 

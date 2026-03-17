@@ -2,40 +2,59 @@ const menu = document.getElementById('menu-burger');
 const navigation = document.getElementById('navigation');
 
 // Toggle the burger menu
-menu.addEventListener('click', () => {
-    menu.classList.toggle('bx-x');
-    navigation.classList.toggle('active');
-});
+if(menu){
+    menu.addEventListener('click', () => {
+        menu.classList.toggle('bx-x');
+        navigation.classList.toggle('active');
+    });
+}
 
 // Close navbar when a link is clicked
-const navLinks = document.querySelectorAll('#navigation a'); // Sélectionner tous les liens dans la navbar
-
+const navLinks = document.querySelectorAll('#navigation a');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        menu.classList.remove('bx-x'); // Revenir à l'état initial du menu burger
-        navigation.classList.remove('active'); // Fermer la navbar
+        menu.classList.remove('bx-x');
+        navigation.classList.remove('active');
     });
 });
-
-// script.js
 
 // Exemple : alerte quand le site est chargé
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('SUNU HABITAT prêt !');
 });
 
-// Exemple : scroll vers une section avec smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href'))
-                .scrollIntoView({ behavior: 'smooth' });
-    });
+const userToggle = document.getElementById("user-toggle");
+const dropdown = document.getElementById("dropdown");
+
+if(userToggle){
+    userToggle.onclick = () => {
+        dropdown.classList.toggle("active");
+    };
+}
+
+// fermer si on clique ailleurs
+window.addEventListener("click", function(e){
+    if(!userToggle.contains(e.target)){
+        dropdown.classList.remove("active");
+    }
 });
 
-let menuDashboard = document.querySelector("#menu-dashboard")
-let sidebar = document.querySelector(".sidebar")
+const menuDashboard = document.getElementById('menu-dashboard');
+const sidebar = document.getElementById('sidebar');
 
-menuDashboard.onclick = () => {
-sidebar.classList.toggle("active")
+if(menuDashboard && sidebar){
+    menuDashboard.addEventListener('click', () => {
+        menuDashboard.classList.toggle('bx-x');
+        sidebar.classList.toggle('active');
+    });
 }
+
+// fermer sidebar après clic lien
+const navLink = document.querySelectorAll('#sidebar a');
+
+navLink.forEach(link => {
+    link.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        menuDashboard.classList.remove('bx-x');
+    });
+});
